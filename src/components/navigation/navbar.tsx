@@ -9,7 +9,7 @@ interface NavbarProps {
     toggleSidebar: () => void;
 }
 
-export default function Navbar({ toggleSidebar } : NavbarProps) {
+export default function Navbar({ toggleSidebar }: NavbarProps) {
     const [showDropdown, setShowDropdown] = useState(false);
 
     return (
@@ -26,7 +26,7 @@ export default function Navbar({ toggleSidebar } : NavbarProps) {
                     <div className="w-10 h-10 bg-gray-300 rounded-full overflow-hidden">
                         <Image
                             className="rounded-full"
-                            src="./globe.svg"
+                            src="https://xsgames.co/randomusers/avatar.php?g=male"
                             alt="Logo"
                             width={40}
                             height={40}

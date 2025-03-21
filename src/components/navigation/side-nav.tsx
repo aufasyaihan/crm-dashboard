@@ -11,7 +11,7 @@ export default function Sidebar({ isOpen }: SidebarProps) {
     return (
         <div
             className={`h-screen bg-indigo-600 text-white transition-all duration-300 ${
-                isOpen ? "w-64" : "w-20"
+                isOpen ? "w-64" : "w-18"
             } overflow-hidden p-4`}
         >
             {isOpen && (
