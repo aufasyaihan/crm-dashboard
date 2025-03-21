@@ -3,19 +3,30 @@
 import Image from "next/image";
 import { IoIosArrowDown } from "react-icons/io";
 import { useState } from "react";
-import { TbLayoutSidebarRightExpandFilled } from "react-icons/tb";
+import {
+    TbLayoutSidebarRightCollapseFilled,
+    TbLayoutSidebarRightExpandFilled,
+} from "react-icons/tb";
+import { IoPerson } from "react-icons/io5";
+import Link from "next/link";
+import { RxExit } from "react-icons/rx";
 
 interface NavbarProps {
     toggleSidebar: () => void;
+    sidebar: boolean;
 }
 
-export default function Navbar({ toggleSidebar }: NavbarProps) {
+export default function Navbar({ toggleSidebar, sidebar }: NavbarProps) {
     const [showDropdown, setShowDropdown] = useState(false);
 
     return (
         <nav className="bg-white w-full flex items-center justify-between p-4 text-black border-b border-gray-200">
-            <button onClick={toggleSidebar} className="cursor-pointer">
-                <TbLayoutSidebarRightExpandFilled className="text-2xl" />
+            <button onClick={toggleSidebar} className="cursor-pointer text-2xl">
+                {sidebar ? (
+                    <TbLayoutSidebarRightExpandFilled />
+                ) : (
+                    <TbLayoutSidebarRightCollapseFilled />
+                )}
             </button>
 
             <div className="relative">
@@ -48,20 +59,26 @@ export default function Navbar({ toggleSidebar }: NavbarProps) {
                 </div>
 
                 {showDropdown && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10 border border-gray-200">
-                        <div className="py-1">
-                            <a
-                                href="#"
-                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    <div className="absolute right-0 mt-5 w-48 bg-white rounded-md shadow-lg z-10 border border-gray-200 select-none">
+                        <div className="p-1">
+                            <Link
+                                href="/profile"
+                                className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             >
+                                <span>
+                                    <IoPerson />
+                                </span>
                                 Profile
-                            </a>
-                            <a
-                                href="#"
-                                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                            </Link>
+                            <Link
+                                href="/login"
+                                className="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                             >
-                                Sign out
-                            </a>
+                                <span>
+                                    <RxExit />
+                                </span>
+                                Log out
+                            </Link>
                         </div>
                     </div>
                 )}

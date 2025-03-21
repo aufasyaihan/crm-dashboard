@@ -21,7 +21,7 @@ export default function SidebarItem({
     return (
         <Link href={href}>
             <div
-                className={` flex gap-2 items-center cursor-pointer rounded-md ${
+                className={` flex gap-2 items-center cursor-pointer rounded-md select-none ${
                     isActive
                         ? "bg-white text-indigo-600 "
                         : "hover:bg-indigo-700"
