@@ -21,7 +21,7 @@ export default function Navbar({ toggleSidebar, sidebar }: NavbarProps) {
 
     return (
         <nav className="bg-white w-full flex items-center justify-between p-4 text-black border-b border-gray-200">
-            <button onClick={toggleSidebar} className="cursor-pointer text-2xl">
+            <button onClick={toggleSidebar} className="cursor-pointer text-2xl text-indigo-600">
                 {sidebar ? (
                     <TbLayoutSidebarRightExpandFilled />
                 ) : (
