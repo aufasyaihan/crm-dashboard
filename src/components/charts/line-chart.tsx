@@ -1,6 +1,6 @@
 "use client";
 
-import { customersGrowthType } from "@/types/data";
+import { CustomersGrowthData } from "@/types/data";
 import {
     Area,
     AreaChart,
@@ -11,21 +11,23 @@ import {
     YAxis,
 } from "recharts";
 
-export default function ChartLine({ data }: { data: customersGrowthType[] }) {
+export default function ChartLine({ data }: { data: CustomersGrowthData[] }) {
     const formattedData = data.map((item) => ({
         ...item,
-        shortMonth: item.month.substring(0, 3), // Add this!
+        shortMonth: new Date(item.date).toLocaleString("en-US", {
+            month: "short",
+        }),
     }));
     return (
         <ResponsiveContainer width="100%" height={200}>
             <AreaChart
                 data={formattedData}
                 margin={{
-                  top: 5,
-                  right: 5,
-                  left: 5,
-                  bottom: 5,
-              }}
+                    top: 5,
+                    right: 5,
+                    left: 5,
+                    bottom: 5,
+                }}
             >
                 <defs>
                     <linearGradient
@@ -71,7 +73,12 @@ function CustomTooltip({
 }: TooltipProps<number, string>) {
     if (active && payload && payload.length && coordinate) {
         const value = payload[0].value;
-        const fullMonth = payload[0].payload.month;
+        const fullMonth = new Date(payload[0].payload.date).toLocaleString(
+            "en-US",
+            {
+                month: "long",
+            }
+        );
         const formattedValue = value
             ? value > 1000
                 ? (value / 1000).toFixed(1)

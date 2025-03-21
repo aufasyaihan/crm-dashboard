@@ -11,10 +11,12 @@ export default function Status({ status }: { status: string }) {
         statusColor = "bg-yellow-500";
     }
     return (
-        <p
-            className={`${statusColor} px-1 py-0.5 text-white rounded-sm capitalize font-medium`}
-        >
-            {status}
-        </p>
+        <div className="flex justify-center items-center ">
+            <p
+                className={`${statusColor} px-1 py-0.5 text-white rounded-sm capitalize font-medium`}
+            >
+                {status}
+            </p>
+        </div>
     );
 }

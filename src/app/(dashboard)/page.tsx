@@ -1,16 +1,83 @@
-import Card from "@/components/card";
+import Card from "@/components/UI/card";
 import ChartBar from "@/components/charts/bar-chart";
 import ChartLine from "@/components/charts/line-chart";
 import { DollarReceive, DollarSend } from "@/components/icon/figma";
 import Status from "@/components/status";
-import { customers, customersGrowth, revenue } from "@/lib/data";
+import Summary from "@/components/summary";
+import { fetchData } from "@/lib/utils";
+import {
+    AutomationData,
+    CustomersData,
+    CustomersGrowthData,
+    ReportData,
+    RevenueData,
+} from "@/types/data";
+import { Suspense } from "react";
 import { BsPersonCheck } from "react-icons/bs";
-import { GoArrowDownRight, GoArrowUpRight } from "react-icons/go";
 import { HiOutlineUsers } from "react-icons/hi";
 import { MdArrowForwardIos } from "react-icons/md";
 
+async function Chart({
+    type,
+    endpoint,
+}: {
+    type: string;
+    endpoint: "revenues" | "customersGrowth";
+}) {
+    if (type === "bar") {
+        const data = await fetchData<RevenueData>(endpoint);
+        return <ChartBar data={data} />;
+    } else {
+        const data = await fetchData<CustomersGrowthData>(endpoint);
+        return <ChartLine data={data} />;
+    }
+}
+async function Reports() {
+    const reports = (await fetchData<ReportData>("reports")).slice(0, 3);
+    return reports.map((report) => (
+        <div
+            key={report.id}
+            className="flex items-center justify-between w-full"
+        >
+            <div className="flex flex-col gap-1">
+                <h3 className="text-base">{report.title}</h3>
+                <p className="text-xs text-gray-500">
+                    {new Date(report.date).toLocaleDateString()}
+                </p>
+            </div>
+            <Status status={report.status} />
+        </div>
+    ));
+}
+async function Automations() {
+    const automations = (await fetchData<AutomationData>("automations")).slice(
+        0,
+        3
+    );
+    return automations.map((automation) => (
+        <div
+            key={automation.id}
+            className="flex items-center justify-between w-full"
+        >
+            <h3 className="text-base">{automation.name}</h3>
+            <Status status={automation.status} />
+        </div>
+    ));
+}
+async function Customers() {
+    const customers = (await fetchData<CustomersData>("customers"))
+        .slice(0, 5)
+        .sort((a, b) => b.totalRevenue - a.totalRevenue);
+    return customers.map((customer, idx) => (
+        <tr key={customer.id} className="text-center">
+            <td>{idx + 1}</td>
+            <td>{customer.name}</td>
+            <td>${customer.totalRevenue.toLocaleString()}</td>
+        </tr>
+    ));
+}
+
 export default function Home() {
-    const topCustomers = customers.slice(0, 5);
     return (
         <div className="m-10 flex flex-col gap-4">
             <div className="flex items-center justify-between relative">
@@ -24,112 +91,67 @@ export default function Home() {
             <main className="flex flex-col gap-4">
                 <div className="flex items-center justify-between gap-4">
                     <Card title="Total Customers" icon={<HiOutlineUsers />}>
-                        <div className="flex flex-col gap-2">
-                            <h2 className="text-5xl font-medium">1,200</h2>
-                            <p className="flex items-center gap-1">
-                                <span className="flex items-center text-green-500 text-md">
-                                    <GoArrowUpRight /> 15%
-                                </span>
-                                From last Month
-                            </p>
-                        </div>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Summary
+                                metric="total"
+                                type="customers"
+                                increase
+                                percentage={15}
+                            />
+                        </Suspense>
                     </Card>
                     <Card title="Active Customers" icon={<BsPersonCheck />}>
-                        <div className="flex flex-col gap-2">
-                            <h2 className="text-5xl font-medium">1,200</h2>
-                            <p className="flex items-center gap-1">
-                                <span className="flex items-center text-red-500 text-md">
-                                    <GoArrowDownRight /> 15%
-                                </span>
-                                From last Month
-                            </p>
-                        </div>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Summary
+                                type="customers"
+                                metric="active"
+                                increase={false}
+                                percentage={10}
+                            />
+                        </Suspense>
                     </Card>
                     <Card title="Total Profits" icon={<DollarReceive />}>
-                        <div className="flex flex-col gap-2">
-                            <h2 className="text-5xl font-medium">1,200</h2>
-                            <p className="flex items-center gap-1">
-                                <span className="flex items-center text-green-500 text-md">
-                                    <GoArrowUpRight /> 15%
-                                </span>
-                                From last Month
-                            </p>
-                        </div>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Summary
+                                metric="profit"
+                                type="revenues"
+                                increase
+                                percentage={20}
+                            />
+                        </Suspense>
                     </Card>
                     <Card title="Total Expenses" icon={<DollarSend />}>
-                        <div className="flex flex-col gap-2">
-                            <h2 className="text-5xl font-medium">1,200</h2>
-                            <p className="flex items-center gap-1">
-                                <span className="flex items-center text-green-500 text-md">
-                                    <GoArrowUpRight /> 15%
-                                </span>
-                                From last Month
-                            </p>
-                        </div>
+                        <Suspense fallback={<div>Loading...</div>}>
+                            <Summary
+                                metric="expense"
+                                type="revenues"
+                                increase
+                                percentage={20}
+                            />
+                        </Suspense>
                     </Card>
                 </div>
                 <div className="flex gap-4 justify-between items-stretch">
                     <div className="w-1/2">
                         <Card title="Revenue Overview">
-                            <ChartBar data={revenue} />
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Chart type="bar" endpoint="revenues" />
+                            </Suspense>
                         </Card>
                     </div>
                     <div className="flex flex-col gap-4 w-1/2">
                         <Card title="Reports" icon={<MdArrowForwardIos />}>
-                            <div className="flex flex-col gap-2">
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="flex flex-col gap-1">
-                                        <h3 className="text-base">
-                                            Q4 Sales Report
-                                        </h3>
-                                        <p className="text-xs text-gray-500">
-                                            01/02/2024
-                                        </p>
-                                    </div>
-                                    <Status status="Completed" />
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <div className="flex flex-col gap-2">
+                                    <Reports />
                                 </div>
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="flex flex-col gap-1">
-                                        <h3 className="text-base">
-                                            Monthly Revenue
-                                        </h3>
-                                        <p className="text-xs text-gray-500">
-                                            01/02/2024
-                                        </p>
-                                    </div>
-                                    <Status status="Completed" />
-                                </div>
-                                <div className="flex items-center justify-between w-full">
-                                    <div className="flex flex-col gap-1">
-                                        <h3 className="text-base">
-                                            Weekly Summary
-                                        </h3>
-                                        <p className="text-xs text-gray-500">
-                                            01/02/2024
-                                        </p>
-                                    </div>
-                                    <Status status="Pending" />
-                                </div>
-                            </div>
+                            </Suspense>
                         </Card>
                         <Card title="Automations" icon={<MdArrowForwardIos />}>
                             <div className="flex flex-col gap-2">
-                                <div className="flex items-center justify-between w-full">
-                                    <h3 className="text-base">Welcome Email</h3>
-                                    <Status status="Active" />
-                                </div>
-                                <div className="flex items-center justify-between w-full">
-                                    <h3 className="text-base">
-                                        Follow Up Reminder
-                                    </h3>
-                                    <Status status="Active" />
-                                </div>
-                                <div className="flex items-center justify-between w-full">
-                                    <h3 className="text-base">
-                                        Feedback Request
-                                    </h3>
-                                    <Status status="Inactive" />
-                                </div>
+                                <Suspense fallback={<div>Loading...</div>}>
+                                    <Automations />
+                                </Suspense>
                             </div>
                         </Card>
                     </div>
@@ -146,20 +168,16 @@ export default function Home() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {topCustomers.map((items,idx) => (
-                                        <tr key={idx} className="text-center">
-                                            <td>{idx + 1}</td>
-                                            <td>{items.name}</td>
-                                            <td>${items.totalRevenue.toLocaleString()}</td>
-                                        </tr>
-                                    ))}
+                                    <Customers />
                                 </tbody>
                             </table>
                         </Card>
                     </div>
                     <div className="flex-1/5">
                         <Card title="Customer Growth">
-                            <ChartLine data={customersGrowth} />
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Chart type="line" endpoint="customersGrowth" />
+                            </Suspense>
                         </Card>
                     </div>
                 </div>

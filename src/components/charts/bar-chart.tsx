@@ -1,6 +1,6 @@
 "use client";
 
-import { RevenueSummary } from "@/types/data";
+import { RevenueData } from "@/types/data";
 import {
     Bar,
     BarChart,
@@ -11,10 +11,12 @@ import {
     YAxis,
 } from "recharts";
 
-export default function ChartBar({ data }: { data: RevenueSummary[] }) {
+export default function ChartBar({ data }: { data: RevenueData[] }) {
     const formattedData = data.map((item) => ({
         ...item,
-        shortMonth: item.month.substring(0, 3), // Add this!
+        shortMonth: new Date(item.date).toLocaleString("en-US", {
+            month: "short",
+        }),
     }));
     return (
         <ResponsiveContainer width="100%" height={350}>
@@ -54,7 +56,9 @@ function CustomTooltip({
 }: TooltipProps<number, string>) {
     if (active && payload && payload.length && coordinate) {
         const value = payload[0].value;
-        const fullMonth = payload[0].payload.month;
+        const fullMonth = new Date(payload[0].payload.date).toLocaleString("en-US", {
+            month: "long",
+        });
         const formattedValue = value ? (value / 1000).toFixed(1) : "0.0";
         const { x, y } = coordinate;
 
@@ -62,14 +66,16 @@ function CustomTooltip({
             <div
                 className="absolute z-50"
                 style={{
-                    transform: `translate(${x ? x - 65 : 0}px, ${
+                    transform: `translate(${x ? x - 63 : 0}px, ${
                         y ? y - 70 : 0
                     }px)`,
                 }}
             >
                 <div className="custom-tooltip bg-indigo-100 flex flex-col px-2 py-1 rounded-lg w-32">
                     <p className="label text-indigo-500">{fullMonth}</p>
-                    <p className="intro font-semibold text-indigo-600">{formattedValue}K</p>
+                    <p className="intro font-semibold text-indigo-600">
+                        {formattedValue}K
+                    </p>
                     <div className="absolute left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-indigo-100 bottom-[-5px]" />
                 </div>
             </div>

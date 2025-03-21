@@ -41,3 +41,23 @@ export function DollarSend() {
         </svg>
     );
 }
+
+export function Export() {
+    return (
+        <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            <g id="material-symbols:file-export-outline">
+                <path
+                    id="Vector"
+                    d="M5.04999 22.375L3.64999 20.95L6.59999 18H4.34999V16H9.99999V21.65H7.99999V19.425L5.04999 22.375ZM12 22V20H18V9H13V4H5.99999V14H3.99999V4C3.99999 3.45 4.19599 2.97933 4.58799 2.588C4.97999 2.19667 5.45066 2.00067 5.99999 2H14L20 8V20C20 20.55 19.8043 21.021 19.413 21.413C19.0217 21.805 18.5507 22.0007 18 22H12Z"
+                    fill="white"
+                />
+            </g>
+        </svg>
+    );
+}
