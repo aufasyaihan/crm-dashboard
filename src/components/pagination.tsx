@@ -24,7 +24,6 @@ export default function Pagination({
 
     let pages: (number | string)[] = [];
     if (totalPages <= 1) {
-        // ✅ TAMPILKAN HANYA 1 JIKA TOTAL PAGE 1 ATAU KURANG
         pages = [1];
     } else {
         const leftSibling = Math.max(2, currentPage - siblingCount);

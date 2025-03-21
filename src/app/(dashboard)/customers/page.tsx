@@ -25,7 +25,7 @@ const customerColumns: Column<CustomersData>[] = [
     {
         header: "Total Revenue",
         render: (item: CustomersData) =>
-            `$${item.totalRevenue.toLocaleString()}`,
+            `$${item.totalRevenue?.toLocaleString()}`,
     },
     {
         header: "Date Joined",

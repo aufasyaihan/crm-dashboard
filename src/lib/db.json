@@ -169,6 +169,14 @@
       "joined": "2025-03-20T12:10:25Z",
       "status": "Active",
       "totalRevenue": 500
+    },
+    {
+      "id": 124,
+      "name": "Aufa Syaihan",
+      "email": "aufa@gmail.com",
+      "status": "Active",
+      "totalRevenue": 0,
+      "joined": "2025-03-21T23:31:11.341Z"
     }
   ],
   "reports": [
@@ -241,6 +249,13 @@
       "date": "2025-03-18T07:11:49Z",
       "type": "Finance",
       "status": "Completed"
+    },
+    {
+      "id": 730,
+      "title": "Hungry",
+      "date": "2025-03-22",
+      "type": "Food",
+      "status": "Pending"
     }
   ],
   "automations": [
@@ -312,6 +327,13 @@
       "name": "Trial Ending Reminder",
       "trigger": "Trial Expiry 3 Days",
       "action": "Send Reminder",
+      "status": "Active"
+    },
+    {
+      "id": 767,
+      "name": "asdasd",
+      "trigger": "asdad",
+      "action": "asdasd",
       "status": "Active"
     }
   ],

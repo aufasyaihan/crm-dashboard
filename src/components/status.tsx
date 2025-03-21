@@ -1,5 +1,5 @@
 export default function Status({ status }: { status: string }) {
-    const statusName = status.toLowerCase();
+    const statusName = status?.toLowerCase();
     let statusColor = "";
     if (statusName == "active" || statusName == "completed") {
         statusColor = "bg-green-500";

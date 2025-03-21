@@ -1,10 +1,10 @@
 import Pagination from "./pagination";
-import Button from "./UI/button";
 import { FiFilter } from "react-icons/fi";
 import { LuArrowDownUp } from "react-icons/lu";
 import { Column } from "@/types/data";
 import DropdownMenu from "./UI/dropdown";
 import Search from "./UI/search";
+import Modal from "./modal";
 
 interface TableDataProps<T> {
     data: T[];
@@ -75,11 +75,7 @@ export default function TableData<T extends object>({
         <>
             <div className="flex flex-col border border-gray-200 rounded-md">
                 <div className="flex justify-between items-center p-4">
-                    <Button
-                        styling="disabled"
-                        icon={icon}
-                        title={`Add ${title}`}
-                    />
+                    <Modal title={title} icon={icon} />
                     <div className="flex gap-2">
                         {filter && (
                             <DropdownMenu

@@ -1,5 +1,6 @@
 "use client";
 
+import { sendData } from "@/lib/utils";
 import { useState } from "react";
 
 export default function Toggle({
@@ -10,35 +11,23 @@ export default function Toggle({
     id: string | number;
 }) {
     const [checked, setChecked] = useState<boolean>(
-        status.toLowerCase() === "active"
+        status?.toLowerCase() === "active"
     );
 
     const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-      const newChecked = e.target.checked;
-      setChecked(newChecked);
+        const newChecked = e.target.checked;
+        setChecked(newChecked);
 
-      try {
-          const response = await fetch(`http://localhost:3002/automations/${id}`, {
-              method: "PATCH",
-              headers: {
-                  "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                  status: newChecked ? "Active" : "Inactive",
-              }),
-          });
+        try {
+            await sendData(`automations/${id}`, "PATCH", {
+                status: newChecked ? "Active" : "Inactive",
+            });
 
-          if (!response.ok) {
-              throw new Error("Failed to update status");
-          }
-
-          console.log(`Status updated to: ${newChecked ? "active" : "inactive"}`);
-      } catch (error) {
-          console.error("Error updating status:", error);
-          // Optional: Rollback UI change if update fails
-          setChecked(!newChecked);
-      }
-  };
+        } catch (error) {
+            console.error("Error updating status:", error);
+            setChecked(!newChecked);
+        }
+    };
 
     const uniqueId = `status-${id}`;
 

@@ -72,7 +72,7 @@ async function Customers() {
         <tr key={customer.id} className="text-center">
             <td>{idx + 1}</td>
             <td>{customer.name}</td>
-            <td>${customer.totalRevenue.toLocaleString()}</td>
+            <td>${customer.totalRevenue?.toLocaleString()}</td>
         </tr>
     ));
 }
