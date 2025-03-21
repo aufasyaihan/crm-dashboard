@@ -18,19 +18,6 @@ interface TableDataProps<T> {
     itemsPerPage?: number;
 }
 
-const filterOptions = [
-    { label: "Active", value: "active" },
-    { label: "Inactive", value: "inactive" },
-    { label: "Pending", value: "pending" },
-];
-
-const sortOptions = [
-    { label: "Latest", value: "latest" },
-    { label: "Oldest", value: "oldest" },
-    { label: "Highest Revenue", value: "highest" },
-    { label: "Lowest Revenue", value: "lowest" },
-];
-
 export default function TableData<T extends object>({
     data,
     columns,
@@ -42,6 +29,36 @@ export default function TableData<T extends object>({
     page = 1,
     itemsPerPage = 10,
 }: TableDataProps<T>) {
+    let filterOptions = [
+        { label: "Active", value: "active" },
+        { label: "Inactive", value: "inactive" },
+        { label: "Pending", value: "pending" },
+    ];
+
+    if (title.toLowerCase() === "report") {
+        const types = Array.from(
+            new Set(data.map((item) => (item as { type: string }).type))
+        );
+        filterOptions = types.map((type) => ({
+            label: type,
+            value: type.toLowerCase(),
+        }));
+    }
+
+    let sortOptions = [
+        { label: "Latest", value: "latest" },
+        { label: "Oldest", value: "oldest" },
+    ];
+
+    if (title.toLowerCase() === "customer") {
+        sortOptions = [
+            { label: "Latest", value: "latest" },
+            { label: "Oldest", value: "oldest" },
+            { label: "Highest Revenue", value: "highest" },
+            { label: "Lowest Revenue", value: "lowest" },
+        ];
+    }
+
     const totalPages = Math.ceil(data.length / itemsPerPage);
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;

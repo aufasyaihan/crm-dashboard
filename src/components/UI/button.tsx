@@ -3,15 +3,25 @@ import React from 'react';
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode;
   title: string;
-  styling: string;
+  styling: "primary" | "secondary" | "danger" | "disabled" | "success";
 }
 
 export default function Button({ styling, icon, title, ...props }: ButtonProps) {
-  styling = styling.toLowerCase();
   if (styling === "primary") {
     return (
       <button
         className="flex items-center gap-2 bg-indigo-600 text-white px-2 py-1 rounded-sm cursor-pointer hover:bg-indigo-700 capitalize"
+        {...props}
+      >
+        {icon}
+        {title}
+      </button>
+    );
+  }
+  if(styling === "success"){
+    return (
+      <button
+        className="flex items-center gap-2 bg-green-600 text-white px-2 py-1 rounded-sm cursor-pointer hover:bg-green-700 capitalize"
         {...props}
       >
         {icon}

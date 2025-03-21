@@ -1,14 +1,16 @@
 export default function Status({ status }: { status: string }) {
     const statusName = status.toLowerCase();
     let statusColor = "";
-    if (statusName === "active" || statusName === "completed") {
+    if (statusName == "active" || statusName == "completed") {
         statusColor = "bg-green-500";
     }
-    if (statusName === "inactive") {
+    else if (statusName == "inactive") {
         statusColor = "bg-red-500";
     }
-    if (statusName === "pending") {
+    else if (statusName == "pending") {
         statusColor = "bg-yellow-500";
+    } else {
+        statusColor = "bg-indigo-600";
     }
     return (
         <div className="flex justify-center items-center ">

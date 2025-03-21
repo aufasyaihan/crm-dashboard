@@ -12,9 +12,9 @@ interface Option {
 
 interface DropdownMenuProps {
     options: Option[];
-    paramKey: string; // "sort" atau "filter" dll
+    paramKey: string;
     icon: React.ReactNode;
-    title: string; // "Sort" / "Filter"
+    title: string;
 }
 
 export default function DropdownMenu({
@@ -53,7 +53,7 @@ export default function DropdownMenu({
                 onClick={() => setIsOpen(!isOpen)}
             />
             {isOpen && (
-                <ul className="absolute right-0 mt-2 bg-white border border-gray-200 drop-shadow-md z-10 w-48 rounded-sm p-1">
+                <ul className={`absolute right-0 mt-2 bg-white border border-gray-200 drop-shadow-md z-10 w-48 ${options.length > 3 ? "h-32" : ""} overflow-y-auto rounded-sm p-1`}>
                     {options.map((option) => (
                         <li
                             key={option.value}
