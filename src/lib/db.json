@@ -1,0 +1,332 @@
+{
+    "revenues": [
+        {
+            "id": 1,
+            "revenue": 12000,
+            "expense": 8000,
+            "date": "2025-01-01T03:24:15Z"
+        },
+        {
+            "id": 2,
+            "revenue": 15000,
+            "expense": 9000,
+            "date": "2025-02-01T11:45:02Z"
+        },
+        {
+            "id": 3,
+            "revenue": 13500,
+            "expense": 10000,
+            "date": "2025-03-01T07:12:38Z"
+        },
+        {
+            "id": 4,
+            "revenue": 16000,
+            "expense": 9000,
+            "date": "2025-04-01T15:58:27Z"
+        },
+        {
+            "id": 5,
+            "revenue": 14500,
+            "expense": 10000,
+            "date": "2025-05-01T06:33:49Z"
+        },
+        {
+            "id": 6,
+            "revenue": 17000,
+            "expense": 9000,
+            "date": "2025-06-01T10:05:16Z"
+        },
+        {
+            "id": 7,
+            "revenue": 18000,
+            "expense": 8000,
+            "date": "2025-07-01T14:42:31Z"
+        },
+        {
+            "id": 8,
+            "revenue": 15500,
+            "expense": 10000,
+            "date": "2025-08-01T08:19:22Z"
+        },
+        {
+            "id": 9,
+            "revenue": 19000,
+            "expense": 10000,
+            "date": "2025-09-01T12:57:04Z"
+        },
+        {
+            "id": 10,
+            "revenue": 20000,
+            "expense": 9000,
+            "date": "2025-10-01T09:48:55Z"
+        },
+        {
+            "id": 11,
+            "revenue": 20000,
+            "expense": 8000,
+            "date": "2025-11-01T16:27:13Z"
+        },
+        {
+            "id": 12,
+            "revenue": 20000,
+            "expense": 7000,
+            "date": "2025-12-01T05:36:40Z"
+        }
+    ],
+    "customers": [
+        {
+            "id": 1,
+            "name": "John Doe",
+            "email": "john@example.com",
+            "joined": "2025-01-10T08:12:33Z",
+            "status": "Active",
+            "totalRevenue": 12000
+        },
+        {
+            "id": 2,
+            "name": "Jane Smith",
+            "email": "jane@example.com",
+            "joined": "2025-01-15T10:45:27Z",
+            "status": "Active",
+            "totalRevenue": 10500
+        },
+        {
+            "id": 3,
+            "name": "Michael Lee",
+            "email": "michael@example.com",
+            "joined": "2025-02-01T14:18:55Z",
+            "status": "Inactive",
+            "totalRevenue": 3800
+        },
+        {
+            "id": 4,
+            "name": "Sarah Kim",
+            "email": "sarah@example.com",
+            "joined": "2025-02-05T06:40:12Z",
+            "status": "Active",
+            "totalRevenue": 9800
+        },
+        {
+            "id": 5,
+            "name": "Chris Evans",
+            "email": "chris@example.com",
+            "joined": "2025-02-20T13:52:47Z",
+            "status": "Pending",
+            "totalRevenue": 4500
+        },
+        {
+            "id": 6,
+            "name": "Lisa Brown",
+            "email": "lisa@example.com",
+            "joined": "2025-03-01T09:33:19Z",
+            "status": "Active",
+            "totalRevenue": 7200
+        },
+        {
+            "id": 7,
+            "name": "Tom Hanks",
+            "email": "tom@example.com",
+            "joined": "2025-03-10T15:27:03Z",
+            "status": "Inactive",
+            "totalRevenue": 3100
+        },
+        {
+            "id": 8,
+            "name": "Nina Hart",
+            "email": "nina@example.com",
+            "joined": "2025-03-15T11:58:39Z",
+            "status": "Active",
+            "totalRevenue": 8900
+        },
+        {
+            "id": 9,
+            "name": "Daniel Wu",
+            "email": "daniel@example.com",
+            "joined": "2025-03-18T07:42:11Z",
+            "status": "Active",
+            "totalRevenue": 6700
+        },
+        {
+            "id": 10,
+            "name": "Emma Stone",
+            "email": "emma@example.com",
+            "joined": "2025-03-20T12:10:25Z",
+            "status": "Pending",
+            "totalRevenue": 5000
+        },
+        {
+            "id": 11,
+            "name": "Aufa",
+            "email": "aufa@example.com",
+            "joined": "2025-03-20T12:10:25Z",
+            "status": "Active",
+            "totalRevenue": 500
+        },
+        {
+            "id": 12,
+            "name": "Ofa",
+            "email": "ofa@example.com",
+            "joined": "2025-03-20T12:10:25Z",
+            "status": "Active",
+            "totalRevenue": 500
+        }
+    ],
+    "reports": [
+        {
+            "id": 1,
+            "title": "Q1 Sales Report",
+            "date": "2025-03-01T04:15:32Z",
+            "type": "Sales",
+            "status": "Completed"
+        },
+        {
+            "id": 2,
+            "title": "Customer Feedback",
+            "date": "2025-03-03T11:28:47Z",
+            "type": "Feedback",
+            "status": "Completed"
+        },
+        {
+            "id": 3,
+            "title": "Monthly Revenue",
+            "date": "2025-03-05T07:33:22Z",
+            "type": "Finance",
+            "status": "Pending"
+        },
+        {
+            "id": 4,
+            "title": "Automation Summary",
+            "date": "2025-03-07T09:45:55Z",
+            "type": "Automation",
+            "status": "Completed"
+        },
+        {
+            "id": 5,
+            "title": "Leads Overview",
+            "date": "2025-03-09T14:10:03Z",
+            "type": "Marketing",
+            "status": "Failed"
+        },
+        {
+            "id": 6,
+            "title": "Retention Analysis",
+            "date": "2025-03-10T13:36:18Z",
+            "type": "Customer",
+            "status": "Completed"
+        },
+        {
+            "id": 7,
+            "title": "Weekly Summary",
+            "date": "2025-03-12T10:05:41Z",
+            "type": "Summary",
+            "status": "Completed"
+        },
+        {
+            "id": 8,
+            "title": "Engagement Metrics",
+            "date": "2025-03-14T08:29:33Z",
+            "type": "Analytics",
+            "status": "Pending"
+        },
+        {
+            "id": 9,
+            "title": "Churn Rate Report",
+            "date": "2025-03-16T12:50:28Z",
+            "type": "Customer",
+            "status": "Completed"
+        },
+        {
+            "id": 10,
+            "title": "Revenue Forecast",
+            "date": "2025-03-18T07:11:49Z",
+            "type": "Finance",
+            "status": "Completed"
+        }
+    ],
+
+    "automations": [
+        {
+            "id": 1,
+            "name": "Welcome Email",
+            "trigger": "New Customer Signup",
+            "action": "Send Email",
+            "status": "Active"
+        },
+        {
+            "id": 2,
+            "name": "Lead Score Update",
+            "trigger": "Form Submission",
+            "action": "Update Lead Score",
+            "status": "Active"
+        },
+        {
+            "id": 3,
+            "name": "Follow-up Reminder",
+            "trigger": "No Interaction 7 Days",
+            "action": "Notify Sales Team",
+            "status": "Inactive"
+        },
+        {
+            "id": 4,
+            "name": "Invoice Generator",
+            "trigger": "Deal Won",
+            "action": "Create Invoice",
+            "status": "Active"
+        },
+        {
+            "id": 5,
+            "name": "Birthday Email",
+            "trigger": "Customer Birthday",
+            "action": "Send Email",
+            "status": "Pending"
+        },
+        {
+            "id": 6,
+            "name": "Churn Alert",
+            "trigger": "Inactivity 30 Days",
+            "action": "Send Alert",
+            "status": "Active"
+        },
+        {
+            "id": 7,
+            "name": "Feedback Request",
+            "trigger": "Purchase Completed",
+            "action": "Send Survey",
+            "status": "Active"
+        },
+        {
+            "id": 8,
+            "name": "Upsell Offer",
+            "trigger": "High Engagement",
+            "action": "Send Offer",
+            "status": "Inactive"
+        },
+        {
+            "id": 9,
+            "name": "Report Summary",
+            "trigger": "Every Monday",
+            "action": "Email Report",
+            "status": "Active"
+        },
+        {
+            "id": 10,
+            "name": "Trial Ending Reminder",
+            "trigger": "Trial Expiry 3 Days",
+            "action": "Send Reminder",
+            "status": "Pending"
+        }
+    ],
+    "customersGrowth": [
+        { "id": 1,"date": "2025-01-01T10:00:00Z", "customers": 150 },
+        { "id": 2,"date": "2025-02-01T10:00:00Z", "customers": 100 },
+        { "id": 3,"date": "2025-03-01T10:00:00Z", "customers": 250 },
+        { "id": 4,"date": "2025-04-01T10:00:00Z", "customers": 200 },
+        { "id": 5,"date": "2025-05-01T10:00:00Z", "customers": 400 },
+        { "id": 6,"date": "2025-06-01T10:00:00Z", "customers": 350 },
+        { "id": 7,"date": "2025-07-01T10:00:00Z", "customers": 450 },
+        { "id": 8,"date": "2025-08-01T10:00:00Z", "customers": 300 },
+        { "id": 9,"date": "2025-09-01T10:00:00Z", "customers": 500 },
+        { "id": 10,"date": "2025-10-01T10:00:00Z", "customers": 550 },
+        { "id": 11,"date": "2025-11-01T10:00:00Z", "customers": 300 }
+    ]
+}
