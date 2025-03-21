@@ -15,7 +15,7 @@ export default function Status({ status }: { status: string }) {
     return (
         <div className="flex justify-center items-center ">
             <p
-                className={`${statusColor} px-1 py-0.5 text-white rounded-sm capitalize font-medium`}
+                className={`${statusColor} px-2 py-1 text-white rounded-sm capitalize font-medium`}
             >
                 {status}
             </p>

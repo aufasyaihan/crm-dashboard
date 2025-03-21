@@ -35,6 +35,13 @@ export default function TableData<T extends object>({
         { label: "Pending", value: "pending" },
     ];
 
+    if (title.toLowerCase() === "automation") {
+        filterOptions = [
+            { label: "Active", value: "active" },
+            { label: "Inactive", value: "inactive" },
+        ];
+    }
+
     if (title.toLowerCase() === "report") {
         const types = Array.from(
             new Set(data.map((item) => (item as { type: string }).type))
