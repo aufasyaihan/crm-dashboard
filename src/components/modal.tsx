@@ -103,10 +103,11 @@ export default function Modal({ title, icon }: ModalProps) {
     return (
         <>
             <Button
-                styling="primary"
+                styling="disabled"
                 icon={icon}
                 title={`Add ${title}`}
                 onClick={() => setOpen(true)}
+                disabled
             />
 
             {open && (

@@ -34,7 +34,7 @@ export default function Toggle({
     return (
         <label
             htmlFor={uniqueId}
-            className="cursor-pointer flex justify-center items-center gap-2"
+            className="flex justify-center items-center gap-2 cursor-not-allowed"
         >
             <input
                 type="checkbox"
@@ -43,6 +43,8 @@ export default function Toggle({
                 checked={checked}
                 onChange={handleChange}
                 hidden
+                disabled
+                className="disabled:cursor-not-allowed"
             />
             <div
                 className={`flex items-center rounded-full ${
