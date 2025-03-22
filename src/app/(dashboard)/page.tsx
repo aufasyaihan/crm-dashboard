@@ -89,47 +89,51 @@ export default function Home() {
                 </h1>
             </div>
             <main className="flex flex-col gap-4">
-                <div className="flex flex-wrap lg:flex-nowrap lg:items-center justify-between gap-4">
-                    <Card title="Total Customers" icon={<HiOutlineUsers />}>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <Summary
-                                metric="total"
-                                type="customers"
-                                increase
-                                percentage={15}
-                            />
-                        </Suspense>
-                    </Card>
-                    <Card title="Active Customers" icon={<BsPersonCheck />}>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <Summary
-                                type="customers"
-                                metric="active"
-                                increase={false}
-                                percentage={10}
-                            />
-                        </Suspense>
-                    </Card>
-                    <Card title="Total Profits" icon={<DollarReceive />}>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <Summary
-                                metric="profit"
-                                type="revenues"
-                                increase
-                                percentage={20}
-                            />
-                        </Suspense>
-                    </Card>
-                    <Card title="Total Expenses" icon={<DollarSend />}>
-                        <Suspense fallback={<div>Loading...</div>}>
-                            <Summary
-                                metric="expense"
-                                type="revenues"
-                                increase
-                                percentage={20}
-                            />
-                        </Suspense>
-                    </Card>
+                <div className="flex flex-wrap xl:flex-nowrap lg:items-center justify-between gap-4">
+                    <div className="flex w-full gap-4 flex-wrap lg:flex-nowrap">
+                        <Card title="Total Customers" icon={<HiOutlineUsers />}>
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Summary
+                                    metric="total"
+                                    type="customers"
+                                    increase
+                                    percentage={15}
+                                />
+                            </Suspense>
+                        </Card>
+                        <Card title="Active Customers" icon={<BsPersonCheck />}>
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Summary
+                                    type="customers"
+                                    metric="active"
+                                    increase={false}
+                                    percentage={10}
+                                />
+                            </Suspense>
+                        </Card>
+                    </div>
+                    <div className="flex w-full gap-4 flex-wrap lg:flex-nowrap">
+                        <Card title="Total Profits" icon={<DollarReceive />}>
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Summary
+                                    metric="profit"
+                                    type="revenues"
+                                    increase
+                                    percentage={20}
+                                />
+                            </Suspense>
+                        </Card>
+                        <Card title="Total Expenses" icon={<DollarSend />}>
+                            <Suspense fallback={<div>Loading...</div>}>
+                                <Summary
+                                    metric="expense"
+                                    type="revenues"
+                                    increase
+                                    percentage={20}
+                                />
+                            </Suspense>
+                        </Card>
+                    </div>
                 </div>
                 <div className="flex gap-4 justify-between items-stretch flex-wrap lg:flex-nowrap">
                     <div className="w-full lg:w-1/2">
