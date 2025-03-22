@@ -10,15 +10,15 @@ interface SidebarProps {
 export default function Sidebar({ isOpen }: SidebarProps) {
     return (
         <div
-            className={`h-screen bg-indigo-600 text-white transition-all duration-300 ${
-                isOpen ? "w-64" : "w-18"
+            className={`h-[100dvh] bg-indigo-600 text-white transition-all duration-300 ${
+                isOpen ? "lg:w-64 w-18" : "w-18"
             } overflow-hidden p-4`}
         >
             {isOpen && (
-                <div className="p-4">
+                <div className="p-4 hidden lg:block">
                     <h1
-                        className={`text-2xl font-bold ${
-                            !isOpen && "md:text-center"
+                        className={`text-2xl font-bold  ${
+                            !isOpen && "lg:text-center"
                         }`}
                     >
                         CRM
@@ -28,8 +28,8 @@ export default function Sidebar({ isOpen }: SidebarProps) {
             <div className="">
                 {isOpen && (
                     <p
-                        className={`px-4 text-xs uppercase text-indigo-200 mb-2 ${
-                            !isOpen && "hidden md:block md:text-center"
+                        className={`px-4 text-xs uppercase text-indigo-200 mb-2 hidden lg:block ${
+                            !isOpen && "hidden lg:block lg:text-center"
                         }`}
                     >
                         Main Menu

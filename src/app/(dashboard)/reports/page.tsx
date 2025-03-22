@@ -4,7 +4,6 @@ import TableData from "@/components/table-data";
 import Button from "@/components/UI/button";
 import { fetchData } from "@/lib/utils";
 import { Column, ReportData } from "@/types/data";
-// import { FaRegClock } from "react-icons/fa";
 import { FiDownload } from "react-icons/fi";
 
 interface ReportsPageProps {
@@ -99,9 +98,9 @@ export default async function ReportPage({ searchParams }: ReportsPageProps) {
     return (
         <div className="m-10 flex flex-col gap-4">
             <div className="flex items-center justify-between relative">
-                <h1 className="flex flex-col gap-1 text-3xl font-medium">
+                <h1 className="flex flex-col gap-1 text-xl md:text-3xl font-medium">
                     Reports{" "}
-                    <span className="text-sm text-gray-500">
+                    <span className="text-xs md:text-sm text-gray-500">
                         Shows list of reports
                     </span>
                 </h1>

@@ -19,33 +19,39 @@ export default function ChartBar({ data }: { data: RevenueData[] }) {
         }),
     }));
     return (
-        <ResponsiveContainer width="100%" height={350}>
-            <BarChart
-                width={500}
-                height={300}
-                data={formattedData}
-                margin={{
-                    top: 5,
-                    right: 5,
-                    left: 5,
-                    bottom: 5,
-                }}
-            >
-                <XAxis dataKey="shortMonth" axisLine={false} tickLine={false} />
-                <YAxis axisLine={false} tickLine={false} />
-                <Tooltip
-                    content={<CustomTooltip />}
-                    cursor={{ fill: "transparent" }}
-                />
-                <Bar
-                    dataKey="revenue"
-                    fill="#4F46E5"
-                    background={{ fill: "#E5E7EB", radius: 10 }}
-                    radius={[10, 10, 0, 0]}
-                    barSize={20}
-                />
-            </BarChart>
-        </ResponsiveContainer>
+        <div className="h-[150px] sm:h-[300px] md:h-[350px]">
+            <ResponsiveContainer width="100%" height="100%">
+                <BarChart
+                    width={500}
+                    height={300}
+                    data={formattedData}
+                    margin={{
+                        top: 5,
+                        right: 5,
+                        left: 0,
+                        bottom: 5,
+                    }}
+                >
+                    <XAxis
+                        dataKey="shortMonth"
+                        axisLine={false}
+                        tickLine={false}
+                    />
+                    <YAxis axisLine={false} tickLine={false} />
+                    <Tooltip
+                        content={<CustomTooltip />}
+                        cursor={{ fill: "transparent" }}
+                    />
+                    <Bar
+                        dataKey="revenue"
+                        fill="#4F46E5"
+                        background={{ fill: "#E5E7EB", radius: 10 }}
+                        radius={[10, 10, 0, 0]}
+                        barSize={20}
+                    />
+                </BarChart>
+            </ResponsiveContainer>
+        </div>
     );
 }
 
@@ -56,9 +62,12 @@ function CustomTooltip({
 }: TooltipProps<number, string>) {
     if (active && payload && payload.length && coordinate) {
         const value = payload[0].value;
-        const fullMonth = new Date(payload[0].payload.date).toLocaleString("en-US", {
-            month: "long",
-        });
+        const fullMonth = new Date(payload[0].payload.date).toLocaleString(
+            "en-US",
+            {
+                month: "long",
+            }
+        );
         const formattedValue = value ? (value / 1000).toFixed(1) : "0.0";
         const { x, y } = coordinate;
 

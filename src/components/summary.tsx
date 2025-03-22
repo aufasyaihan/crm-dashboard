@@ -49,13 +49,13 @@ export default async function Summary({
     const displayValue = calculateValue(data, type, metric);
 
     return (
-        <div className="flex flex-col gap-2">
-            <h2 className="text-5xl font-medium">
+        <div className="flex flex-col gap-2 h-full">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-5xl font-medium">
                 {type === "revenues" && metric !== "total"
                     ? `$${displayValue.toLocaleString()}`
                     : displayValue}
             </h2>
-            <p className="flex items-center gap-1">
+            <p className="flex items-center gap-1 text-xs md:text-sm lg:text-base">
                 <span
                     className={`flex items-center ${
                         increase ? "text-green-500" : "text-red-500"

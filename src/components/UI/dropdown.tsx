@@ -38,7 +38,7 @@ export default function DropdownMenu({
 
     const handleClear = () => {
         const params = new URLSearchParams(searchParams);
-        params.delete(paramKey); // hapus param filter
+        params.delete(paramKey); 
         params.set("page", "1");
         router.push(`?${params.toString()}`);
         setIsOpen(false);
@@ -53,7 +53,7 @@ export default function DropdownMenu({
                 onClick={() => setIsOpen(!isOpen)}
             />
             {isOpen && (
-                <ul className={`absolute right-0 mt-2 bg-white border border-gray-200 drop-shadow-md z-10 w-48 ${options.length > 3 ? "h-32" : ""} overflow-y-auto rounded-sm p-1`}>
+                <ul className={`absolute right-0 mt-2 bg-white border border-gray-200 drop-shadow-md z-10 w-fit md:w-48 ${options.length > 3 ? "h-32" : ""} overflow-y-auto rounded-sm p-1`}>
                     {options.map((option) => (
                         <li
                             key={option.value}

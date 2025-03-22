@@ -72,9 +72,9 @@ export default async function AutomationPage({
     return (
         <div className="m-10 flex flex-col gap-4">
             <div className="flex items-center justify-between relative">
-                <h1 className="flex flex-col gap-1 text-3xl font-medium">
+                <h1 className="flex flex-col gap-1 text-xl md:text-3xl font-medium">
                     Automations{" "}
-                    <span className="text-sm text-gray-500">
+                    <span className="text-xs md:text-sm text-gray-500">
                         Shows list of automations
                     </span>
                 </h1>

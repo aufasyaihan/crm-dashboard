@@ -11,11 +11,10 @@ interface ModalProps {
 
 export default function Modal({ title, icon }: ModalProps) {
     const [open, setOpen] = useState(false);
-    const [checked, setChecked] = useState<boolean>(false); // for toggle UI only
+    const [checked, setChecked] = useState<boolean>(false); 
     const modalRef = useRef<HTMLDivElement>(null);
     const formRef = useRef<HTMLFormElement>(null);
 
-    // Close modal on outside click
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (
@@ -35,7 +34,6 @@ export default function Modal({ title, icon }: ModalProps) {
         };
     }, [open]);
 
-    // Close modal on ESC key
     useEffect(() => {
         function handleEscKey(event: KeyboardEvent) {
             if (event.key === "Escape") {
@@ -68,7 +66,6 @@ export default function Modal({ title, icon }: ModalProps) {
             const type = formData.get("type");
             const trigger = formData.get("trigger");
             const action = formData.get("action");
-            // Add the checkbox value manually
             const isActive = checked;
 
             if (title === "Customer") {
@@ -100,7 +97,7 @@ export default function Modal({ title, icon }: ModalProps) {
         }
 
         setOpen(false);
-        setChecked(false); // Reset toggle
+        setChecked(false);
     };
 
     return (
@@ -116,7 +113,7 @@ export default function Modal({ title, icon }: ModalProps) {
                 <div className="fixed inset-0 z-50 bg-black/20 flex items-center justify-center">
                     <div
                         ref={modalRef}
-                        className="bg-white rounded-lg shadow-lg w-full max-w-md mx-4 overflow-hidden p-4 flex flex-col gap-4"
+                        className="bg-white rounded-lg shadow-lg w-3/4 md:w-full max-w-md mx-4 overflow-hidden p-4 flex flex-col gap-4"
                     >
                         {/* Header */}
                         <div className="flex justify-between items-center">

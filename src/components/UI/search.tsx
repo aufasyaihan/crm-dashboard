@@ -36,10 +36,10 @@ export default function Search() {
     }, [searchInput, router, searchParams]);
 
     return (
-        <div className="flex relative font-medium">
+        <div className="flex relative font-medium w-full md:w-auto">
             <IoSearchOutline className="absolute left-2 top-1/4 cursor-pointer" />
             <input
-                className="pl-8 pr-4 py-1 border border-gray-400 rounded-md"
+                className="pl-8 pr-4 py-1 border border-gray-400 rounded-md w-full text-sm md:text-base"
                 type="search"
                 placeholder="Search..."
                 value={searchInput}

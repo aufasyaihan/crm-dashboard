@@ -40,7 +40,7 @@ async function Reports() {
             className="flex items-center justify-between w-full"
         >
             <div className="flex flex-col gap-1">
-                <h3 className="text-base">{report.title}</h3>
+                <h3 className="text-sm md:text-base">{report.title}</h3>
                 <p className="text-xs text-gray-500">
                     {new Date(report.date).toLocaleDateString()}
                 </p>
@@ -59,7 +59,7 @@ async function Automations() {
             key={automation.id}
             className="flex items-center justify-between w-full"
         >
-            <h3 className="text-base">{automation.name}</h3>
+            <h3 className="text-sm md:text-base">{automation.name}</h3>
             <Status status={automation.status} />
         </div>
     ));
@@ -81,15 +81,15 @@ export default function Home() {
     return (
         <div className="m-10 flex flex-col gap-4">
             <div className="flex items-center justify-between relative">
-                <h1 className="flex flex-col gap-1 text-3xl font-medium">
+                <h1 className="flex flex-col gap-1 text-xl md:text-3xl font-medium">
                     Hi, Matthew!{" "}
-                    <span className="text-sm text-gray-500">
+                    <span className="text-xs md:text-sm text-gray-500">
                         Let&apos;s see the current business overview
                     </span>
                 </h1>
             </div>
             <main className="flex flex-col gap-4">
-                <div className="flex items-center justify-between gap-4">
+                <div className="flex flex-wrap lg:flex-nowrap lg:items-center justify-between gap-4">
                     <Card title="Total Customers" icon={<HiOutlineUsers />}>
                         <Suspense fallback={<div>Loading...</div>}>
                             <Summary
@@ -131,15 +131,15 @@ export default function Home() {
                         </Suspense>
                     </Card>
                 </div>
-                <div className="flex gap-4 justify-between items-stretch">
-                    <div className="w-1/2">
+                <div className="flex gap-4 justify-between items-stretch flex-wrap lg:flex-nowrap">
+                    <div className="w-full lg:w-1/2">
                         <Card title="Revenue Overview">
                             <Suspense fallback={<div>Loading...</div>}>
                                 <Chart type="bar" endpoint="revenues" />
                             </Suspense>
                         </Card>
                     </div>
-                    <div className="flex flex-col gap-4 w-1/2">
+                    <div className="flex flex-col gap-4 w-full lg:w-1/2">
                         <Card title="Reports" icon={<MdArrowForwardIos />}>
                             <Suspense fallback={<div>Loading...</div>}>
                                 <div className="flex flex-col gap-2">
@@ -156,24 +156,24 @@ export default function Home() {
                         </Card>
                     </div>
                 </div>
-                <div className="flex gap-4 justify-between items-stretch">
-                    <div className="flex-1">
+                <div className="flex gap-4 justify-between items-stretch flex-wrap lg:flex-nowrap">
+                    <div className="w-full lg:flex-1">
                         <Card title="Top Customers">
                             <table className="w-full">
-                                <thead>
+                                <thead className="text-sm sm:text-base">
                                     <tr>
                                         <th>Rank</th>
                                         <th>Name</th>
                                         <th>Total Revenue</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className="text-sm sm:text-base">
                                     <Customers />
                                 </tbody>
                             </table>
                         </Card>
                     </div>
-                    <div className="flex-1/5">
+                    <div className="w-full lg:flex-1/5">
                         <Card title="Customer Growth">
                             <Suspense fallback={<div>Loading...</div>}>
                                 <Chart type="line" endpoint="customersGrowth" />

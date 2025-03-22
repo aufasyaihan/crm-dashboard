@@ -25,10 +25,10 @@ export default function SidebarItem({
                     isActive
                         ? "bg-white text-indigo-600 "
                         : "hover:bg-indigo-700"
-                } ${isOpen ? "px-4 py-2 " : "p-2 w-full justify-center"}`}
+                } ${isOpen ? "p-2 w-full justify-center lg:w-auto lg:justify-normal lg:px-4 lg:py-2 " : "p-2 w-full justify-center"}`}
             >
                 <span className="text-xl">{icon}</span>
-                {isOpen && <span>{text}</span>}
+                {isOpen && <span className="hidden lg:block">{text}</span>}
             </div>
         </Link>
     );

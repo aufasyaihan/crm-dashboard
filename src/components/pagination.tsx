@@ -50,7 +50,7 @@ export default function Pagination({
     };
 
     return (
-        <div className="flex justify-between items-center w-full">
+        <div className="flex justify-center md:justify-between items-center w-full flex-wrap md:flex-nowrap gap-4 md:gap-0">
             <p className="text-sm text-gray-500">
                 Showing {startItem} to {endItem} of {length} entries
             </p>

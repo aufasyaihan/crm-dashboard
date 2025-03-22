@@ -74,9 +74,9 @@ export default function TableData<T extends object>({
     return (
         <>
             <div className="flex flex-col border border-gray-200 rounded-md">
-                <div className="flex justify-between items-center p-4">
+                <div className="flex justify-between gap-2 md:gap-0 items-center p-4 flex-wrap md:flex-nowrap">
                     <Modal title={title} icon={icon} />
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 flex-wrap md:flex-nowrap w-full md:w-auto">
                         {filter && (
                             <DropdownMenu
                                 options={filterOptions}
@@ -97,13 +97,16 @@ export default function TableData<T extends object>({
                     </div>
                 </div>
 
-                <div className="flex flex-col gap-4">
-                    <table className="w-full">
+                <div className="flex flex-col gap-4 overflow-x-auto w-full">
+                    <table className="w-full ">
                         <thead className="border-t border-gray-200">
-                            <tr className="capitalize text-gray-500">
-                                <th className="py-2">No</th>
+                            <tr className="capitalize text-gray-500 text-sm md:text-base">
+                                <th className="py-2 px-6 md:px-0">No</th>
                                 {columns.map((col, index) => (
-                                    <th key={index} className="py-2">
+                                    <th
+                                        key={index}
+                                        className="py-2 px-6 md:px-0"
+                                    >
                                         {col.header}
                                     </th>
                                 ))}
@@ -113,13 +116,16 @@ export default function TableData<T extends object>({
                             {paginatedData.map((item, index) => (
                                 <tr
                                     key={getRowId ? getRowId(item) : index}
-                                    className="border-t border-gray-200 text-center"
+                                    className="border-t border-gray-200 text-center text-sm md:text-base"
                                 >
-                                    <td className="py-2">
+                                    <td className="py-2 px-6 md:px-0">
                                         {startIndex + index + 1}
                                     </td>
                                     {columns.map((col, colIndex) => (
-                                        <td key={colIndex} className="py-2">
+                                        <td
+                                            key={colIndex}
+                                            className="py-2 px-6 md:px-0"
+                                        >
                                             {col.render
                                                 ? col.render(item)
                                                 : col.accessor
