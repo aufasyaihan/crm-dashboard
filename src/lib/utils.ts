@@ -7,12 +7,8 @@ export const fetchData = async <T extends object>(
             : "";
 
     const res = await fetch(`${baseUrl}/api/${endpoint}`, {
-        method: "GET",
         next: { revalidate: 3600 },
     });
-
-    console.log(res);
-    
 
     return res.json();
 };
