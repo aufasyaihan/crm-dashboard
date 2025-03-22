@@ -33,7 +33,7 @@ async function Chart({
     }
 }
 async function Reports() {
-    const reports = (await fetchData<ReportData>("reports")).slice(0, 3);
+    const reports = (await fetchData<ReportData>("reports"))?.slice(0, 3);
     return reports.map((report) => (
         <div
             key={report.id}

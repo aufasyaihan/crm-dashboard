@@ -69,7 +69,7 @@ export default function TableData<T extends object>({
     const totalPages = Math.ceil(data.length / itemsPerPage);
     const startIndex = (page - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
-    const paginatedData = data.slice(startIndex, endIndex);
+    const paginatedData = data?.slice(startIndex, endIndex);
 
     return (
         <>

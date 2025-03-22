@@ -24,12 +24,12 @@ const calculateValue = (
 
     const revenueData = data as RevenueData[];
     if (metric === "revenue") {
-        return revenueData.reduce((sum, item) => sum + item.revenue, 0);
+        return revenueData?.reduce((sum, item) => sum + item.revenue, 0);
     }
     if (metric === "expense") {
-        return revenueData.reduce((sum, item) => sum + item.expense, 0);
+        return revenueData?.reduce((sum, item) => sum + item.expense, 0);
     }
-    return revenueData.reduce(
+    return revenueData?.reduce(
         (sum, item) => sum + (item.revenue - item.expense),
         0
     );
